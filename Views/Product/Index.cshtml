@@ -1,0 +1,31 @@
+﻿@model IEnumerable<InventoryStock.Models.Product>
+<div class="container">
+    <h2>Inventory List</h2>
+<p>Debug: Total items found is @Model.Count()</p>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Category</td>
+                    <td>@item.Price.ToString("C")</td>
+                    <td>@item.StockCount</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">View Analytics</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

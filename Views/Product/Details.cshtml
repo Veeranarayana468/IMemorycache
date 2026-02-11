@@ -1,0 +1,44 @@
+﻿@model InventoryStock.ViewModels.ViewProductDetails
+
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h3>Analytics for @Model.Name</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <!-- Data Point 1 -->
+                <div class="col-md-4 text-center border-end">
+                    <h5>Total Stock Value</h5>
+                    <h2 class="text-primary">@Model.TotalValue.ToString("C")</h2>
+                </div>
+                
+                <!-- Data Point 2 -->
+                <div class="col-md-4 text-center border-end">
+                    <h5>Stock Health</h5>
+                    <h2 class="@Model.HealthColor">@Model.StockHealth</h2>
+                </div>
+
+                <!-- Data Point 3 -->
+                <div class="col-md-4 text-center">
+                    <h5>Unit Price</h5>
+                    <h2>@Model.Price.ToString("C")</h2>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+</div>
+
+
+
+@if (TempData["LastFetchTime"] != null)
+{
+    <div class="alert alert-info">
+        Last product fetch took: @TempData["LastFetchTime"] ms
+    </div>
+}
+
+
